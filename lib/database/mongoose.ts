@@ -21,7 +21,7 @@ export const connectToDatabase = async () => {
     if (!MONGODB_URL) throw new Error('Missing MONGODB_URL');
 
     cached.promise = cached.promise ||
-        mongoose.connect(MONGODB_URL, { dbName: 'pixcelpalace', bufferCommands: false })
+        mongoose.connect(MONGODB_URL, { dbName: 'saas_pixcelpalace', bufferCommands: false })
 
     cached.conn = await cached.promise;
 
