@@ -21,7 +21,7 @@ export async function getUserById(userId: string) {
     try {
         await connectToDatabase();
 
-        const user = await User.findById({ clerkId: userId });
+        const user = await User.findOne({ clerkId: userId }); // Use findOne instead of findById
 
         if (!user) throw new Error("User not found")
 
@@ -30,6 +30,7 @@ export async function getUserById(userId: string) {
         handleError(error);
     }
 }
+
 
 export async function updateUser(clerkId: string, user: UpdateUserParams) {
     try {

@@ -13,15 +13,15 @@ export function cn(...inputs: ClassValue[]) {
 // ERROR HANDLER
 export const handleError = (error: unknown) => {
   if (error instanceof Error) {
-
+    // This is a native JavaScript error (e.g., TypeError, RangeError)
     console.error(error.message);
     throw new Error(`Error: ${error.message}`);
   } else if (typeof error === "string") {
-
+    // This is a string error message
     console.error(error);
     throw new Error(`Error: ${error}`);
   } else {
-
+    // This is an unknown type of error
     console.error(error);
     throw new Error(`Unknown error: ${JSON.stringify(error)}`);
   }
@@ -50,7 +50,7 @@ const toBase64 = (str: string) =>
 export const dataUrl = `data:image/svg+xml;base64,${toBase64(
   shimmer(1000, 1000)
 )}`;
-
+// ==== End
 
 // FORM URL QUERY
 export const formUrlQuery = ({
@@ -76,7 +76,7 @@ export function removeKeysFromQuery({
     delete currentUrl[key];
   });
 
-
+  // Remove null or undefined values
   Object.keys(currentUrl).forEach(
     (key) => currentUrl[key] == null && delete currentUrl[key]
   );
